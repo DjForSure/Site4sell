@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Birthday</title>
+<script>/* EDIT HERE */const WA="917571062508";const CONFIG={demo:true,music:"",recipientName:"Your Love",senderName:"Someone Special",date:"",greeting:"Another year of you, and the world is better for it.",photos:[],timeline:[["Where it started","The day I first noticed your smile."],["Our favourite year","Too many laughs to count."],["Now","Every day with you is a gift."]],notes:["You're kind in ways you don't notice.","You make me braver.","I'm proud of you."],surprises:["I booked us a little weekend away.","There's a cake waiting for you.","And I love you more than words."],finale:"Happy Birthday. Thank you for being you."};</script>
+<style>
+*{box-sizing:border-box;margin:0}body{background:linear-gradient(#2a1a3d,#4a2450 50%,#2a1a3d);color:#fbe9f1;font-family:Georgia,serif;text-align:center}
+#in{height:100vh;display:grid;place-items:center;padding:20px}h1{font-weight:400;font-size:clamp(2.2rem,10vw,5rem)}h1 span{display:inline-block;opacity:0;transform:translateY(30px);animation:r .8s forwards}@keyframes r{to{opacity:1;transform:none}}
+section{max-width:760px;margin:auto;padding:60px 20px;opacity:0;transform:translateY(30px);transition:1s}.in{opacity:1;transform:none}h2{color:#f4b6cf;font-weight:400;margin-bottom:20px}
+button,label{display:inline-block;font:600 15px system-ui;padding:12px 28px;border-radius:99px;border:1px solid #f4b6cf;background:none;color:#f4b6cf;cursor:pointer;margin:6px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.g img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px}
+.t{border-left:2px solid #f4b6cf;text-align:left;margin-left:12px}.t div{padding:0 0 24px 22px;position:relative}.t div:before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:#f4b6cf}.t b{color:#f4b6cf}
+.n{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}.n div{background:#ffffff14;border-radius:14px;padding:20px;line-height:1.6}
+.cake{position:relative;width:200px;height:130px;margin:50px auto 20px}.c1{position:absolute;bottom:0;width:200px;height:55px;background:#d77a9f;border-radius:10px}.c2{position:absolute;bottom:55px;left:25px;width:150px;height:45px;background:#f4b6cf;border-radius:10px 10px 0 0}
+.k{position:absolute;bottom:100px;width:8px;height:28px;background:#cfe6ff;border-radius:3px}.k b{position:absolute;top:-16px;left:-2px;width:12px;height:16px;background:#ffb347;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:fl .4s infinite alternate}.out b{display:none}@keyframes fl{to{transform:scale(1.2,.9)}}
+#sp{min-height:3em;font-size:1.3rem;margin:14px 0}
+</style></head><body>
+<div id="in"><div><p id="dt"></p><h1 id="h"></h1><p id="gr" style="margin-top:20px"></p></div></div>
+<section><div class="cake"><i class="k" style="left:55px"><b></b></i><i class="k" style="left:96px"><b></b></i><i class="k" style="left:137px"><b></b></i><div class="c2"></div><div class="c1"></div></div><button id="bl">Make a wish</button></section>
+<section><h2>Memories</h2><div class="g" id="g"></div><label>Add photos<input type="file" id="f" accept="image/*" multiple hidden></label></section>
+<section><h2>Our Timeline</h2><div class="t" id="t"></div></section>
+<section><h2>Notes For You</h2><div class="n" id="n"></div></section>
+<section><h2>Surprises</h2><div id="sp"></div><button id="sb">Reveal a surprise</button></section>
+<section><h1 id="fn" style="font-size:2rem"></h1></section>
+<script>
+const $=s=>document.querySelector(s),io=new IntersectionObserver(es=>es.forEach(x=>x.isIntersecting&&x.target.classList.add("in")));
+function confetti(n=120){const c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:99";c.width=innerWidth;c.height=innerHeight;document.body.append(c);const x=c.getContext("2d"),P=[...Array(n)].map(()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height/2,v:2+Math.random()*4,r:4+Math.random()*5,h:Math.random()*360,s:Math.random()*2-1}));(function f(){x.clearRect(0,0,c.width,c.height);let a=0;P.forEach(p=>{p.y+=p.v;p.x+=p.s;if(p.y<c.height){a=1;x.fillStyle="hsl("+p.h+",80%,65%)";x.fillRect(p.x,p.y,p.r,p.r*1.6)}});a?requestAnimationFrame(f):c.remove()})()}
+document.title="Happy Birthday "+CONFIG.recipientName;$("#dt").textContent=CONFIG.date;$("#gr").textContent=CONFIG.greeting;
+$("#h").innerHTML=[..."Happy Birthday,"].map((c,i)=>`<span style="animation-delay:${i*.07}s">${c==" "?"&nbsp;":c}</span>`).join("")+"<br><small></small>";$("#h small").textContent=CONFIG.recipientName;
+CONFIG.timeline.forEach(([a,b])=>{const d=document.createElement("div");d.innerHTML="<b></b><p></p>";d.firstChild.textContent=a;d.lastChild.textContent=b;$("#t").append(d)});
+CONFIG.notes.forEach(t=>{const d=document.createElement("div");d.textContent=t;$("#n").append(d)});
+const PH="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="#4a2450"/><text x="100" y="115" font-size="44" text-anchor="middle">📷</text></svg>');
+const add=s=>{const i=new Image();i.src=s;$("#g").append(i)};
+(CONFIG.photos.length?CONFIG.photos:[PH,PH,PH,PH]).forEach(add);
+$("#f").onchange=e=>{if(!e.target.files.length)return;$("#g").innerHTML="";[...e.target.files].forEach(f=>add(URL.createObjectURL(f)))};
+$("#bl").onclick=()=>{document.querySelectorAll(".k").forEach(k=>k.classList.add("out"));confetti();$("#bl").textContent="Your wish is safe with the stars ✨"};
+let n=0;$("#sb").onclick=()=>{if(n<CONFIG.surprises.length){$("#sp").textContent=CONFIG.surprises[n++];confetti(60)}if(n>=CONFIG.surprises.length){$("#sb").style.display="none";$("#fn").textContent=CONFIG.finale+" — "+CONFIG.senderName;confetti(200)}};
+document.querySelectorAll("section").forEach(s=>io.observe(s));
+</script><canvas id="du" style="position:fixed;inset:0;z-index:-1;pointer-events:none"></canvas><script>(()=>{const c=document.getElementById("du"),x=c.getContext("2d");let P=[];const R=()=>{c.width=innerWidth;c.height=innerHeight;P=[...Array(45)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+.5,v:.15+Math.random()*.4}))};R();addEventListener("resize",R);(function f(){x.clearRect(0,0,c.width,c.height);x.fillStyle="#f4b6cf";P.forEach(p=>{p.y-=p.v;if(p.y<-5)p.y=c.height+5;x.globalAlpha=.2+p.r/5;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});requestAnimationFrame(f)})()})();</script>
+<div id="pg" style="position:fixed;top:0;left:0;height:3px;width:0;background:#f4b6cf;z-index:45"></div><script>addEventListener("scroll",()=>{document.getElementById("pg").style.width=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100+"%"})</script>
+<button id="mu" style="display:none;position:fixed;left:14px;bottom:14px;z-index:40;width:44px;height:44px;padding:0;margin:0;border-radius:50%;border:1px solid #f4b6cf;background:#0008;color:#f4b6cf;font-size:18px;cursor:pointer">🎵</button><script>(()=>{if(!CONFIG.music)return;const a=new Audio(CONFIG.music),b=document.getElementById("mu");a.loop=true;b.style.display="block";b.onclick=()=>a.paused?(a.play(),b.textContent="⏸"):(a.pause(),b.textContent="🎵")})();</script>
+<a id="wa" target="_blank" rel="noopener" style="position:fixed;right:14px;bottom:14px;z-index:40;background:#25d366;color:#fff;font:600 14px system-ui;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px #0004">Order this on WhatsApp</a>
+<script>/* demo button: set demo:false in CONFIG for the copy you deliver */(()=>{const a=document.getElementById("wa");if(!CONFIG.demo)return a.remove();a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi! I'd like the Birthday Premium website (₹299).")})();</script>
+</body></html>

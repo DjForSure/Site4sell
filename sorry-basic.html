@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>I'm Sorry</title>
+<script>/* EDIT HERE */const WA="917571062508";const CONFIG={demo:true,recipientName:"Your Love",senderName:"Someone Special",message:"I'm sorry. I made a mistake and I hate that it hurt you.",closing:"You just made my whole day. I promise to do better.",emoji:"🌸"};</script>
+<style>
+*{box-sizing:border-box;margin:0}body{min-height:100vh;display:grid;place-items:center;text-align:center;font-family:Georgia,serif;background:linear-gradient(#fff0f3,#f3e8ff);color:#4a2c3d;overflow:hidden;padding:20px}
+h1{font-size:clamp(2rem,8vw,3.2rem)}p{margin:16px auto;max-width:420px;line-height:1.6}
+button{font:600 18px system-ui;padding:14px 32px;border:0;border-radius:99px;margin:8px;cursor:pointer;background:#d6708a;color:#fff;transition:.2s}
+#no{background:#b9a6c9;position:relative}.f{position:fixed;bottom:-40px;opacity:.55;animation:up linear forwards}@keyframes up{to{transform:translateY(-115vh) rotate(40deg)}}.s{display:none}
+</style></head><body><main><div id="a"><h1>Hey <span id="r"></span>…</h1><p id="m"></p><p><b>Will you forgive me?</b></p><button id="yes">Yes 💗</button><button id="no">No</button></div><div id="b" class="s"><h1>Thank you 🥹</h1><p id="c"></p></div></main>
+<script>
+const $=s=>document.querySelector(s);
+$("#r").textContent=CONFIG.recipientName;$("#m").textContent=CONFIG.message+" — "+CONFIG.senderName;$("#c").textContent=CONFIG.closing+" — "+CONFIG.senderName;
+function fl(n){for(let i=0;i<n;i++){const e=document.createElement("span");e.className="f";e.textContent=CONFIG.emoji;e.style.cssText="left:"+Math.random()*100+"vw;animation-duration:"+(6+Math.random()*6)+"s;animation-delay:"+Math.random()*4+"s;font-size:"+(18+Math.random()*18)+"px";document.body.append(e)}}
+fl(10);let n=0;const no=$("#no"),yes=$("#yes");
+const T=["Are you sure?","Really?","Please 🥺","Think again…","Pretty please?"],mv=()=>{no.style.left=(Math.random()*160-80)+"px";no.style.top=(Math.random()*90-45)+"px"};
+no.onmouseover=mv;no.onclick=()=>{n++;no.textContent=T[n%T.length];yes.style.transform="scale("+Math.min(1+n*.12,2.2)+")";mv()};
+yes.onclick=()=>{$("#a").classList.add("s");$("#b").classList.remove("s");fl(30)};
+</script><a id="wa" target="_blank" rel="noopener" style="position:fixed;right:14px;bottom:14px;z-index:40;background:#25d366;color:#fff;font:600 14px system-ui;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px #0004">Order this on WhatsApp</a>
+<script>/* demo button: set demo:false in CONFIG for the copy you deliver */(()=>{const a=document.getElementById("wa");if(!CONFIG.demo)return a.remove();a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi! I'd like the Simple Sorry website (₹49).")})();</script>
+</body></html>

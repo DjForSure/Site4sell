@@ -1,0 +1,34 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A Letter For You</title>
+<script>/* EDIT HERE */const WA="917571062508";const CONFIG={demo:true,promises:["I'll listen before I speak.","I'll show up, even when it's hard.","I'll never take you for granted."],recipientName:"Your Love",senderName:"Someone Special",paragraphs:["I'm sorry. Not the quick kind, the real kind.","I know my words hurt you, and I've thought about it every day since.","You mean more to me than being right ever could."],closing:"Thank you for giving me another chance.",finale:"I'll spend every day deserving it."};</script>
+<style>
+*{box-sizing:border-box;margin:0}body{min-height:100vh;background:radial-gradient(#3b2347,#140d1c);color:#f5e6ee;font-family:Georgia,serif;display:grid;place-items:center;text-align:center;padding:20px}
+.sc{display:none;max-width:460px;width:100%;animation:in 1.4s}.on{display:block}@keyframes in{from{opacity:0;transform:translateY(20px)}}
+h1{font-weight:400;font-size:clamp(1.8rem,7vw,3rem);letter-spacing:.04em}p{line-height:1.8;margin:18px 0}
+button{font:600 15px system-ui;padding:12px 28px;border-radius:99px;border:1px solid #e8b4c8;background:none;color:#f5e6ee;cursor:pointer;touch-action:none;user-select:none}
+.env{width:260px;height:170px;margin:30px auto;background:#d99bb3;position:relative;border-radius:6px;cursor:pointer;box-shadow:0 20px 50px #0008}
+.fl{position:absolute;top:0;left:0;right:0;height:90px;background:#c9819e;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform 1s}.open .fl{transform:rotateX(180deg)}
+.ltr{background:#fff8f0;color:#4a2c3d;border-radius:10px;padding:28px;text-align:left;box-shadow:0 20px 50px #0008}#p{transition:opacity .3s}
+#bar{height:6px;background:#ffffff22;border-radius:9px;margin:18px 0}#bar i{display:block;height:100%;width:0;background:#e8b4c8;border-radius:9px}
+</style></head><body><main>
+<div class="sc on"><h1 id="t"></h1><p>Before anything else, there's something I need to say.</p><button id="go">Continue</button></div>
+<div class="sc"><p>A letter is waiting for you.</p><div class="env" id="env"><div class="fl"></div></div><p>Tap the envelope</p></div>
+<div class="sc"><div class="ltr"><h3 id="to"></h3><p id="p"></p><p id="by"></p></div><br><button id="nx">Next</button></div>
+<div class="sc"><h1>My promises</h1><div id="pr"></div><button id="pn">Continue</button></div>
+<div class="sc"><h1>Can you forgive me?</h1><p>Press and hold the button.</p><div id="bar"><i></i></div><button id="hold">Hold to forgive</button></div>
+<div class="sc"><h1 id="end"></h1><p id="fin"></p></div>
+</main><script>
+const $=s=>document.querySelector(s),S=document.querySelectorAll(".sc"),P=CONFIG.paragraphs;let k=0,st=0,tm;
+$("#t").textContent="Dear "+CONFIG.recipientName;$("#to").textContent="My dearest "+CONFIG.recipientName+",";$("#by").textContent="— "+CONFIG.senderName;$("#end").textContent=CONFIG.closing;$("#fin").textContent=CONFIG.finale;$("#p").textContent=P[0];
+const go=i=>S.forEach((e,j)=>e.classList.toggle("on",i==j));
+$("#go").onclick=()=>go(1);
+$("#env").onclick=()=>{$("#env").classList.add("open");setTimeout(()=>go(2),1100)};
+$("#nx").onclick=()=>{if(++k>=P.length)return go(3);$("#p").style.opacity=0;setTimeout(()=>{$("#p").textContent=P[k];$("#p").style.opacity=1},300);if(k==P.length-1)$("#nx").textContent="Continue"};
+const H=$("#hold"),stop=()=>{clearInterval(tm);st=0;$("#bar i").style.width=0};
+H.oncontextmenu=e=>e.preventDefault();
+H.onpointerdown=()=>{stop();tm=setInterval(()=>{st+=2;$("#bar i").style.width=st+"%";if(st>=100){clearInterval(tm);go(5)}},40)};
+H.onpointerup=H.onpointerleave=stop;
+</script><script>CONFIG.promises.forEach((t,i)=>{const p=document.createElement("p");p.textContent="• "+t;p.style.animation="in 1s "+(i*1.2+.4)+"s both";$("#pr").append(p)});$("#pn").onclick=()=>go(4);</script>
+<canvas id="du" style="position:fixed;inset:0;z-index:-1;pointer-events:none"></canvas><script>(()=>{const c=document.getElementById("du"),x=c.getContext("2d");let P=[];const R=()=>{c.width=innerWidth;c.height=innerHeight;P=[...Array(45)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+.5,v:.15+Math.random()*.4}))};R();addEventListener("resize",R);(function f(){x.clearRect(0,0,c.width,c.height);x.fillStyle="#e8b4c8";P.forEach(p=>{p.y-=p.v;if(p.y<-5)p.y=c.height+5;x.globalAlpha=.2+p.r/5;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});requestAnimationFrame(f)})()})();</script>
+<a id="wa" target="_blank" rel="noopener" style="position:fixed;right:14px;bottom:14px;z-index:40;background:#25d366;color:#fff;font:600 14px system-ui;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px #0004">Order this on WhatsApp</a>
+<script>/* demo button: set demo:false in CONFIG for the copy you deliver */(()=>{const a=document.getElementById("wa");if(!CONFIG.demo)return a.remove();a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi! I'd like the Effortful Sorry website (₹99).")})();</script>
+</body></html>

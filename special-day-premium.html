@@ -1,0 +1,41 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Our Day</title>
+<script>/* EDIT HERE */const WA="917571062508";const CONFIG={demo:true,music:"",since:"",occasion:"Our Anniversary",recipientName:"Your Love",senderName:"Someone Special",date:"",photos:[],timeline:[["The beginning","The day we first met."],["Getting closer","When I knew you were special."],["Today","Every day with you is a gift."]],letter:"Every day with you is better than the last. Thank you for the laughter, the patience and the love.",surprise:"I love you. Always."};</script>
+<style>
+*{box-sizing:border-box;margin:0}body{background:#120c18;color:#f3e6d8;font-family:Georgia,serif;text-align:center}
+#intro{height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 50% 40%,#3b2447,#120c18);padding:20px}
+h1{font-weight:400;font-size:clamp(2.2rem,9vw,4.5rem);letter-spacing:.06em;background:linear-gradient(90deg,#d9b27c,#fff0d6,#d9b27c);background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 4s linear infinite}@keyframes sh{to{background-position:200%}}
+h2{color:#d9b27c;font-weight:400;margin-bottom:22px}section{max-width:760px;margin:auto;padding:70px 20px;opacity:0;transform:translateY(30px);transition:1s}section.in{opacity:1;transform:none}
+button,label{display:inline-block;font:600 15px system-ui;padding:12px 30px;border-radius:99px;border:1px solid #d9b27c;background:none;color:#d9b27c;cursor:pointer;margin-top:20px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.g img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:zoom-in;transition:.4s}.g img:hover{transform:scale(1.04)}
+.t{border-left:2px solid #d9b27c;text-align:left;margin-left:12px}.t div{padding:0 0 26px 22px;position:relative}.t div:before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:#d9b27c}.t b{color:#d9b27c}
+#lb{position:fixed;inset:0;background:#000d;display:none;place-items:center;z-index:9}#lb img{max-width:92%;max-height:92%}
+.ltr{background:#fff8f0;color:#3a2a3a;border-radius:12px;padding:28px;text-align:left;line-height:1.8;white-space:pre-line}
+#cur{position:relative;min-height:180px;overflow:hidden;border:1px solid #d9b27c;border-radius:12px;display:grid;place-items:center;padding:24px;font-size:1.3rem;cursor:pointer}
+#cur i{position:absolute;top:0;bottom:0;width:50%;background:#2a1a35;transition:1.6s;display:grid;place-items:center;font-style:normal;color:#d9b27c;z-index:2}#cl{left:0}#cr{right:0}.o #cl{transform:translateX(-101%)}.o #cr{transform:translateX(101%)}
+</style></head><body>
+<div id="intro"><div><p id="oc"></p><h1 id="h"></h1><p id="dt"></p><button id="go">Begin</button></div></div>
+<section><h2>Gallery</h2><div class="g" id="g"></div><label>Add photos<input type="file" id="f" accept="image/*" multiple hidden></label></section>
+<section><h2>Our Story</h2><div class="t" id="t"></div></section>
+<section><h2>A Letter</h2><div class="ltr" id="l"></div></section>
+<section><h2>One More Thing</h2><div id="cur"><i id="cl">Tap</i><i id="cr">to open</i><p id="s"></p></div></section>
+<div id="lb"><img alt=""></div>
+<script>
+const $=s=>document.querySelector(s),io=new IntersectionObserver(es=>es.forEach(x=>x.isIntersecting&&x.target.classList.add("in")));
+$("#oc").textContent=CONFIG.occasion;$("#h").textContent=CONFIG.recipientName;$("#dt").textContent=CONFIG.date;$("#l").textContent=CONFIG.letter+"\n\n— "+CONFIG.senderName;$("#s").textContent=CONFIG.surprise+" — "+CONFIG.senderName;
+document.title=CONFIG.occasion+" · "+CONFIG.recipientName;
+CONFIG.timeline.forEach(([a,b])=>{const d=document.createElement("div");d.innerHTML="<b></b><p></p>";d.firstChild.textContent=a;d.lastChild.textContent=b;$("#t").append(d)});
+const PH="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="#2a1a35"/><text x="100" y="115" font-size="44" text-anchor="middle">📷</text></svg>');
+const add=s=>{const i=new Image();i.src=s;i.onclick=()=>{$("#lb img").src=s;$("#lb").style.display="grid"};$("#g").append(i)};
+(CONFIG.photos.length?CONFIG.photos:[PH,PH,PH,PH]).forEach(add);
+$("#f").onchange=e=>{if(!e.target.files.length)return;$("#g").innerHTML="";[...e.target.files].forEach(f=>add(URL.createObjectURL(f)))};
+$("#lb").onclick=()=>$("#lb").style.display="none";
+$("#go").onclick=()=>$("section").scrollIntoView({behavior:"smooth"});
+$("#cur").onclick=()=>$("#cur").classList.add("o");
+document.querySelectorAll("section").forEach(s=>io.observe(s));
+</script><script>if(CONFIG.since){const d=Math.floor((Date.now()-new Date(CONFIG.since))/864e5);if(d>0)$("#dt").textContent=(CONFIG.date?CONFIG.date+" · ":"")+d+" days of us"}</script>
+<canvas id="du" style="position:fixed;inset:0;z-index:-1;pointer-events:none"></canvas><script>(()=>{const c=document.getElementById("du"),x=c.getContext("2d");let P=[];const R=()=>{c.width=innerWidth;c.height=innerHeight;P=[...Array(45)].map(()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*2+.5,v:.15+Math.random()*.4}))};R();addEventListener("resize",R);(function f(){x.clearRect(0,0,c.width,c.height);x.fillStyle="#d9b27c";P.forEach(p=>{p.y-=p.v;if(p.y<-5)p.y=c.height+5;x.globalAlpha=.2+p.r/5;x.beginPath();x.arc(p.x,p.y,p.r,0,7);x.fill()});requestAnimationFrame(f)})()})();</script>
+<div id="pg" style="position:fixed;top:0;left:0;height:3px;width:0;background:#d9b27c;z-index:45"></div><script>addEventListener("scroll",()=>{document.getElementById("pg").style.width=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100+"%"})</script>
+<button id="mu" style="display:none;position:fixed;left:14px;bottom:14px;z-index:40;width:44px;height:44px;padding:0;margin:0;border-radius:50%;border:1px solid #d9b27c;background:#0008;color:#d9b27c;font-size:18px;cursor:pointer">🎵</button><script>(()=>{if(!CONFIG.music)return;const a=new Audio(CONFIG.music),b=document.getElementById("mu");a.loop=true;b.style.display="block";b.onclick=()=>a.paused?(a.play(),b.textContent="⏸"):(a.pause(),b.textContent="🎵")})();</script>
+<a id="wa" target="_blank" rel="noopener" style="position:fixed;right:14px;bottom:14px;z-index:40;background:#25d366;color:#fff;font:600 14px system-ui;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px #0004">Order this on WhatsApp</a>
+<script>/* demo button: set demo:false in CONFIG for the copy you deliver */(()=>{const a=document.getElementById("wa");if(!CONFIG.demo)return a.remove();a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi! I'd like the Premium Special Day website (₹299).")})();</script>
+</body></html>

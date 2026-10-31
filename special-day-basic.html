@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A Special Day</title>
+<script>/* EDIT HERE */const WA="917571062508";const CONFIG={demo:true,since:"",reasons:["Your laugh","Your kindness","The way you listen","How safe I feel with you"],occasion:"Happy Anniversary",recipientName:"Your Love",senderName:"Someone Special",date:"",accent:"#c9617f",memory:"I still remember the day everything felt different, in the best way.",photos:[],notes:["You make ordinary days feel special.","Thank you for being you.","I love how we laugh together."],surprise:"I love you. Here's to every day ahead."};</script>
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:Georgia,serif;background:#fff8f0;color:#3a2a3a;text-align:center}
+section{max-width:860px;margin:auto;padding:56px 20px}h1{font-size:clamp(2rem,7vw,3.4rem)}h2{margin-bottom:20px}
+header{padding:90px 20px;background:linear-gradient(135deg,#f7d9e0,#e6dcf5)}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}.g img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;box-shadow:0 8px 24px #c9617f22}
+.c{background:#fff;border-radius:16px;padding:20px;box-shadow:0 8px 24px #c9617f22;margin:10px 0;opacity:0;transform:translateY(20px);transition:.7s}.c.in{opacity:1;transform:none}
+button,label{display:inline-block;padding:12px 26px;border:0;border-radius:99px;background:var(--a,#c9617f);color:#fff;font:600 15px system-ui;cursor:pointer;margin-top:14px}#sur{display:none;font-size:1.4rem;margin-top:20px}
+.rc{min-height:110px;margin:0;border-radius:16px;background:#fff;color:#3a2a3a;box-shadow:0 8px 24px #c9617f22;font:600 15px Georgia,serif;padding:14px;transition:.4s}.rc.on{background:var(--a);color:#fff;transform:rotateY(360deg)}</style></head><body>
+<header><p id="occ"></p><h1 id="h"></h1><p id="dt"></p></header>
+<section><h2>Our Gallery</h2><div class="g" id="g"></div><label>Add photos<input type="file" id="f" accept="image/*" multiple hidden></label></section>
+<section><h2>A Memory</h2><div class="c" id="mem"></div></section>
+<section><h2>Little Notes</h2><div id="n"></div></section>
+<section><h2>Why I Love You</h2><div class="g" id="rs"></div></section>
+<section><button id="b">Open your surprise</button><p id="sur"></p></section>
+<script>
+const $=s=>document.querySelector(s);document.documentElement.style.setProperty("--a",CONFIG.accent);
+document.title=CONFIG.occasion+" · "+CONFIG.recipientName;
+$("#occ").textContent=CONFIG.occasion;$("#h").textContent="For "+CONFIG.recipientName;$("#dt").textContent=CONFIG.date;$("#mem").textContent=CONFIG.memory;$("#sur").textContent=CONFIG.surprise+" — "+CONFIG.senderName;
+const PH="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="#e6dcf5"/><text x="100" y="115" font-size="44" text-anchor="middle">📷</text></svg>');
+const add=s=>{const i=new Image();i.src=s;$("#g").append(i)};
+(CONFIG.photos.length?CONFIG.photos:[PH,PH,PH,PH,PH,PH]).forEach(add);
+$("#f").onchange=e=>{if(!e.target.files.length)return;$("#g").innerHTML="";[...e.target.files].forEach(f=>add(URL.createObjectURL(f)))};
+CONFIG.notes.forEach(t=>{const d=document.createElement("div");d.className="c";d.textContent=t;$("#n").append(d)});
+const io=new IntersectionObserver(es=>es.forEach(x=>x.isIntersecting&&x.target.classList.add("in")));document.querySelectorAll(".c").forEach(e=>io.observe(e));
+$("#b").onclick=()=>{$("#sur").style.display="block";$("#b").style.display="none"};
+</script><script>if(CONFIG.since){const d=Math.floor((Date.now()-new Date(CONFIG.since))/864e5);if(d>0)$("#dt").textContent=(CONFIG.date?CONFIG.date+" · ":"")+d+" days of us"}</script>
+<script>CONFIG.reasons.forEach(t=>{const b=document.createElement("button");b.className="rc";b.textContent="Tap";b.onclick=()=>{b.classList.toggle("on");b.textContent=b.classList.contains("on")?t:"Tap"};$("#rs").append(b)});</script>
+<a id="wa" target="_blank" rel="noopener" style="position:fixed;right:14px;bottom:14px;z-index:40;background:#25d366;color:#fff;font:600 14px system-ui;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px #0004">Order this on WhatsApp</a>
+<script>/* demo button: set demo:false in CONFIG for the copy you deliver */(()=>{const a=document.getElementById("wa");if(!CONFIG.demo)return a.remove();a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi! I'd like the Classic Special Day website (₹199).")})();</script>
+</body></html>

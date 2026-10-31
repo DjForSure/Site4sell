@@ -1,0 +1,33 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Birthday</title>
+<script>/* EDIT HERE */const WA="917571062508";const CONFIG={demo:true,recipientName:"Your Love",senderName:"Someone Special",age:"",message:"Wishing you a year full of joy, laughter and everything you love.",wishes:["Stay happy","Keep shining","Make a big wish"],photos:[],surprise:"You're my favourite person. Happy Birthday!"};</script>
+<style>
+*{box-sizing:border-box;margin:0}body{font-family:Georgia,serif;background:linear-gradient(#fff3c4,#ffd6e0 60%,#e6dcf5);color:#5a2d4a;text-align:center;min-height:100vh}
+section{max-width:760px;margin:auto;padding:50px 20px}h1{font-size:clamp(2.2rem,9vw,4rem)}h1 span{display:inline-block;animation:bn 1.2s ease-in-out infinite}@keyframes bn{50%{transform:translateY(-12px)}}
+.cake{position:relative;width:200px;height:130px;margin:60px auto 20px}.c1{position:absolute;bottom:0;width:200px;height:55px;background:#f4a6bd;border-radius:10px}.c2{position:absolute;bottom:55px;left:25px;width:150px;height:45px;background:#ffc2d1;border-radius:10px 10px 0 0}
+.k{position:absolute;bottom:100px;width:8px;height:28px;background:#9ad0f5;border-radius:3px}.k b{position:absolute;top:-16px;left:-2px;width:12px;height:16px;background:orange;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;animation:fl .4s infinite alternate}.out b{display:none}@keyframes fl{to{transform:scale(1.2,.9)}}
+button,label{display:inline-block;padding:12px 26px;border:0;border-radius:99px;background:#e0709a;color:#fff;font:600 15px system-ui;cursor:pointer;margin:6px}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.g img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px}
+#w{font-size:1.3rem;min-height:2em;transition:opacity .4s}.m{background:#fff;border-radius:16px;padding:22px;line-height:1.7;box-shadow:0 8px 24px #e0709a22}#fin{display:none;margin-top:16px}
+@keyframes bu{to{transform:translateY(-115vh)}}</style></head><body>
+<section><h1 id="h"></h1><div id="w"></div></section>
+<section><div class="cake"><i class="k" style="left:55px"><b></b></i><i class="k" style="left:96px"><b></b></i><i class="k" style="left:137px"><b></b></i><div class="c2"></div><div class="c1"></div></div><button id="blow">Blow the candles</button></section>
+<section><div class="m" id="m"></div></section>
+<section><div class="g" id="g"></div><label>Add photos<input type="file" id="f" accept="image/*" multiple hidden></label></section>
+<section><button id="sur">Final surprise 🎁</button><p id="fin" class="m"></p></section>
+<script>
+const $=s=>document.querySelector(s);
+function confetti(n=120){const c=document.createElement("canvas");c.style.cssText="position:fixed;inset:0;pointer-events:none;z-index:99";c.width=innerWidth;c.height=innerHeight;document.body.append(c);const x=c.getContext("2d"),P=[...Array(n)].map(()=>({x:Math.random()*c.width,y:-20-Math.random()*c.height/2,v:2+Math.random()*4,r:4+Math.random()*5,h:Math.random()*360,s:Math.random()*2-1}));(function f(){x.clearRect(0,0,c.width,c.height);let a=0;P.forEach(p=>{p.y+=p.v;p.x+=p.s;if(p.y<c.height){a=1;x.fillStyle="hsl("+p.h+",80%,65%)";x.fillRect(p.x,p.y,p.r,p.r*1.6)}});a?requestAnimationFrame(f):c.remove()})()}
+document.title="Happy Birthday "+CONFIG.recipientName;
+$("#h").innerHTML=[..."Happy Birthday"].map((c,i)=>`<span style="animation-delay:${i*.08}s">${c==" "?"&nbsp;":c}</span>`).join("")+"<br><small></small>";$("#h small").textContent=CONFIG.recipientName+(CONFIG.age?" · "+CONFIG.age:"");
+$("#m").textContent=CONFIG.message+" — "+CONFIG.senderName;$("#fin").textContent=CONFIG.surprise+" — "+CONFIG.senderName;
+let w=0;const W=$("#w");W.textContent=CONFIG.wishes[0];setInterval(()=>{W.style.opacity=0;setTimeout(()=>{W.textContent=CONFIG.wishes[++w%CONFIG.wishes.length];W.style.opacity=1},400)},2800);
+$("#blow").onclick=()=>{document.querySelectorAll(".k").forEach(k=>k.classList.add("out"));confetti()};
+const PH="data:image/svg+xml,"+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><rect width="200" height="200" fill="#ffe3ec"/><text x="100" y="115" font-size="44" text-anchor="middle">📷</text></svg>');
+const add=s=>{const i=new Image();i.src=s;$("#g").append(i)};
+(CONFIG.photos.length?CONFIG.photos:[PH,PH,PH,PH]).forEach(add);
+$("#f").onchange=e=>{if(!e.target.files.length)return;$("#g").innerHTML="";[...e.target.files].forEach(f=>add(URL.createObjectURL(f)))};
+$("#sur").onclick=()=>{$("#fin").style.display="block";$("#sur").style.display="none";confetti(200)};
+</script><script>(()=>{const E=["🎈","🎈","🎀","⭐"];for(let i=0;i<10;i++){const b=document.createElement("span");b.textContent=E[i%4];b.style.cssText="position:fixed;bottom:-60px;left:"+(5+Math.random()*80)+"vw;font-size:"+(28+Math.random()*22)+"px;cursor:pointer;z-index:5;animation:bu "+(9+Math.random()*7)+"s linear "+Math.random()*6+"s infinite";b.onclick=()=>{b.remove();confetti(40)};document.body.append(b)}})();</script>
+<a id="wa" target="_blank" rel="noopener" style="position:fixed;right:14px;bottom:14px;z-index:40;background:#25d366;color:#fff;font:600 14px system-ui;padding:11px 18px;border-radius:99px;text-decoration:none;box-shadow:0 6px 20px #0004">Order this on WhatsApp</a>
+<script>/* demo button: set demo:false in CONFIG for the copy you deliver */(()=>{const a=document.getElementById("wa");if(!CONFIG.demo)return a.remove();a.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Hi! I'd like the Birthday Classic website (₹199).")})();</script>
+</body></html>
